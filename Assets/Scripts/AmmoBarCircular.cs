@@ -15,6 +15,5 @@ public class AmmoBarCircular : MonoBehaviour
 
     public void setFill(float ammoPercentage) {
         image.fillAmount = ammoPercentage * maxFill;
-        Debug.Log("Ammobar image fill " + image.fillAmount + " ammoPercentage : " + ammoPercentage + " max fill " + maxFill);
     }
 }

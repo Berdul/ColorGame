@@ -5,25 +5,28 @@ using UnityEngine;
 public class CameraMovements : MonoBehaviour
 {
     public GameObject player;
-    private float offset;
+    public float offset;
     private bool closeCamera = true;
-    // Start is called before the first frame update
+
+    public float rotationSpeed;
+
     void Start()
     {
+        transform.rotation = Quaternion.Euler(45, 45, 0);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space)) {
             closeCamera = !closeCamera;
         }
         if (closeCamera) {
-            offset = 12f;
-            transform.position = new Vector3(player.transform.position.x - offset, 50, player.transform.position.z - offset);
+            offset = 5;
+            transform.position = new Vector3(player.transform.position.x - offset, 20, player.transform.position.z - offset);
         } else {
-            offset = 3f;
-            transform.position = new Vector3(player.transform.position.x - offset, 15, player.transform.position.z - offset);
+            offset = 12;
+            transform.position = new Vector3(player.transform.position.x - offset, 40, player.transform.position.z - offset);
         }
+        transform.LookAt(player.transform);
     }
 }

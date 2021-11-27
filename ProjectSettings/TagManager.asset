@@ -9,6 +9,7 @@ TagManager:
   - Bullet
   - Score
   - AmmoBarCircular
+  - Monster
   layers:
   - Default
   - TransparentFX

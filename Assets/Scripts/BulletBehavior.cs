@@ -8,7 +8,6 @@ public class BulletBehavior : MonoBehaviour
     
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("YOYOY GUN BOOM");
         MonsterBehavior monsterBehavior = other.GetComponent<MonsterBehavior>();
         if (monsterBehavior != null) {
             // Monsters are immune to bullets of their own color

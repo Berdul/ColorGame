@@ -25,7 +25,6 @@ public class PlayerHealth : MonoBehaviour
     public void damage(int damage) {
         if (isInvincible) return;
 
-        //Debug.Log("Player - take damage : HP" + healthPoints + " - damage " + damage);
         healthPoints -= damage;
         healthBarSlider.value = healthPoints;
         if (healthPoints <= 0) {

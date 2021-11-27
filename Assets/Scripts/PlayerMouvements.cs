@@ -6,7 +6,6 @@ public class PlayerMouvements : MonoBehaviour
 {
     public float movementSpeed;
     public GameObject firePoint;
-    private Vector3 movement = new Vector3(0, 1f, 0);
     public CharacterController characterController;
 
     // Update is called once per frame

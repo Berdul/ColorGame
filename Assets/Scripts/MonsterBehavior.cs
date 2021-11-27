@@ -12,6 +12,7 @@ public class MonsterBehavior : MonoBehaviour
     public int maxHealthPoints;
     public Slider healthBarSlider;
     private GameObject score;
+    private Vector3 runDirection;
 
     void Start()
     {
@@ -28,12 +29,11 @@ public class MonsterBehavior : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 runDirection = player.transform.position - transform.position;
-        runDirection.y = 1;
+        runDirection = player.transform.position - transform.position;
         runDirection.Normalize();
         transform.position += runDirection * Time.deltaTime * speed;
         transform.position = new Vector3(transform.position.x, 1, transform.position.z);
-        gameObject.transform.LookAt(runDirection);
+        gameObject.transform.LookAt(player.transform);
     }
 
     private void OnCollisionEnter(Collision other) {
