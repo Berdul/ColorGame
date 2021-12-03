@@ -23,7 +23,7 @@ public class LevelManager : MonoBehaviour
     }
 
     private void spawnMonster() {
-        Vector3 rngVector = Random.onUnitSphere * 1f;
+        Vector3 rngVector = Random.insideUnitCircle.normalized * 5f;
         rngVector.y = 1;
         Vector3 spawnPosition = Camera.main.ViewportToWorldPoint(rngVector) + player.transform.position;
 

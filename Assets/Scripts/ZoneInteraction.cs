@@ -14,7 +14,7 @@ public class ZoneInteraction : MonoBehaviour
     void Start()
     {
         baseColor = gameObject.GetComponent<Renderer>().material.color = Color.white;
-        zoneColor = ColorManager.pickColor(Random.Range(0, 5));
+        zoneColor = ColorManager.pickColor(Random.Range(0, ColorManager.colors.Length));
         player = GameObject.FindGameObjectWithTag("Player");
     }
 

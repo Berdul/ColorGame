@@ -5,35 +5,39 @@ using UnityEngine.UI;
 
 public class MonsterBehavior : MonoBehaviour
 {
-    private GameObject player;
-    public float speed;
+    public Rigidbody rb;
+    public float movementSpeed;
     public Color color;
-    public int healthPoints;
     public int maxHealthPoints;
     public Slider healthBarSlider;
+
+    private GameObject player;
+    private int healthPoints;
     private GameObject score;
-    private Vector3 runDirection;
+    private Vector3 moveDirection;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         score = GameObject.FindGameObjectWithTag("Score");
-        color = ColorManager.pickColor(Random.Range(0,5));
-        gameObject.GetComponent<Renderer>().material.color = color;
+        color = ColorManager.pickColor(Random.Range(0,ColorManager.colors.Length));
+        gameObject.GetComponentInChildren<Renderer>().material.color = color;
 
-        maxHealthPoints = 4;
         healthPoints = maxHealthPoints;
         healthBarSlider.maxValue = maxHealthPoints;
         healthBarSlider.value = healthPoints;
     }
 
+    void Update()
+    {
+        moveDirection = (player.transform.position - transform.position);
+        moveDirection.y = 0;
+    }
     void FixedUpdate()
     {
-        runDirection = player.transform.position - transform.position;
-        runDirection.Normalize();
-        transform.position += runDirection * Time.deltaTime * speed;
-        transform.position = new Vector3(transform.position.x, 1, transform.position.z);
-        gameObject.transform.LookAt(player.transform);
+        rb.velocity = moveDirection.normalized * movementSpeed;
+        Vector3 lookAt = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
+        gameObject.transform.LookAt(lookAt);
     }
 
     private void OnCollisionEnter(Collision other) {
@@ -43,7 +47,6 @@ public class MonsterBehavior : MonoBehaviour
     }
 
     public void damage(int damage) {
-        Debug.Log("MonsterBehavior - take damage : HP" + healthPoints + " - damage " + damage);
         healthPoints -= damage;
         healthBarSlider.value = healthPoints;
         if (healthPoints <= 0) {

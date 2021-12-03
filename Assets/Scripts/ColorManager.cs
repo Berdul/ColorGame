@@ -10,11 +10,17 @@ public class ColorManager : MonoBehaviour
     private int activeColorIndex;
     private KeyCode[] keyCodes = new KeyCode[]{};
 
+    // public static Color[] colors = new Color[] {
+    //     new Color(0, 48f/255f, 73/255f, 1), 
+    //     new Color(214/255f, 40/255f, 40/255f, 1), 
+    //     new Color(247/255f, 127/255f, 0, 1),
+    //     new Color(252/255f, 191/255f, 73/255f, 1), 
+    //     new Color(234/255f, 226/255f, 183/255f, 1)};
+
     public static Color[] colors = new Color[] {
         new Color(0, 48f/255f, 73/255f, 1), 
         new Color(214/255f, 40/255f, 40/255f, 1), 
-        new Color(247/255f, 127/255f, 0, 1),
-        new Color(252/255f, 191/255f, 73/255f, 1), 
+        new Color(247/255f, 127/255f, 0, 1), 
         new Color(234/255f, 226/255f, 183/255f, 1)};
 
     void Awake()

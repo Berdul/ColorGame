@@ -16,7 +16,7 @@ public class MainMenu : MonoBehaviour
         loadingMenu.SetActive(true);
 
         scenesToLoad.Add(SceneManager.LoadSceneAsync("Base scene"));
-        scenesToLoad.Add(SceneManager.LoadSceneAsync("Level scene", LoadSceneMode.Additive));
+        scenesToLoad.Add(SceneManager.LoadSceneAsync("Level2Tiled", LoadSceneMode.Additive));
         StartCoroutine(loadingScreen());
     }
 

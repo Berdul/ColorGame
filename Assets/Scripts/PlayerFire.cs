@@ -14,7 +14,8 @@ public class PlayerFire : MonoBehaviour
 
     public Color activeColor;
     public Dictionary<Color, int> colorAmmos = new Dictionary<Color, int>();
-    public AmmoBarsCircular ammoBarUiCircular;
+    public AmmoBarsCircular ammoBarsUi;
+    public GameObject meleeWeapon;
 
     void OnEnable()
     {
@@ -29,11 +30,6 @@ public class PlayerFire : MonoBehaviour
         for (int i = 0; i < ColorManager.colors.Length; i++) {
             colorAmmos.Add(ColorManager.colors[i], initAmmoValue);
         }
-        foreach (KeyValuePair<Color, int> colorAmmo in colorAmmos) {
-            ammoBarUiCircular.setColorAmmoBarMaxValue(colorAmmo.Key, 1 / (float)colorAmmos.Count);
-            ammoBarUiCircular.setColorAmmoBarValue(colorAmmo.Key, colorAmmo.Value);
-        }
-    
     }
 
     // Update is called once per frame
@@ -48,6 +44,16 @@ public class PlayerFire : MonoBehaviour
             }
         }
 
+        if(Input.GetKeyDown(KeyCode.V)) {
+            Debug.Log("PAAAF");
+            meleeWeapon.GetComponent<Animator>().SetTrigger("meleeAttackTrigger");
+        }
+        
+    }
+
+    void LateUpdate()
+    {   
+        //meleeWeapon.GetComponent<Animator>().ResetTrigger("meleeAttackTrigger");
     }
 
     void OnDisable()
@@ -67,7 +73,7 @@ public class PlayerFire : MonoBehaviour
         if (colorAmmos.TryGetValue(activeColor, out int ammo)) {
             int newAmmoAmount = ammo - amount;
             colorAmmos[activeColor] = newAmmoAmount;
-            ammoBarUiCircular.setColorAmmoBarValue(activeColor, newAmmoAmount);
+            ammoBarsUi.setColorAmmoBarValue(activeColor, newAmmoAmount);
         }
     }
 
@@ -82,7 +88,7 @@ public class PlayerFire : MonoBehaviour
         if (colorAmmos.TryGetValue(color, out int ammo)) {
             int newAmmoAmount = ammo + amount;
             colorAmmos[color] = newAmmoAmount;
-            ammoBarUiCircular.setColorAmmoBarValue(color, newAmmoAmount);
+            ammoBarsUi.setColorAmmoBarValue(color, newAmmoAmount);
         }
         return ammo;
     }

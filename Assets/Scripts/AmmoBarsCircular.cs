@@ -10,6 +10,7 @@ public class AmmoBarsCircular : MonoBehaviour
     public GameObject player;
     private Color activeColor;
     private int maxAmmo;
+    private int initAmmo;
 
     public Vector3 smallScale;
     public Vector3 bigScale;
@@ -41,6 +42,11 @@ public class AmmoBarsCircular : MonoBehaviour
         activeColor = player.GetComponent<PlayerFire>().activeColor;
         highlightColorAmmoBar(activeColor);
         maxAmmo = player.GetComponent<PlayerFire>().maxAmmo;
+        initAmmo = player.GetComponent<PlayerFire>().initAmmoValue;
+        for (int i = 0; i < ColorManager.colors.Length; i++) {
+            setColorAmmoBarMaxValue(ColorManager.colors[i], ColorManager.colors.Length);
+            setColorAmmoBarValue(ColorManager.colors[i], initAmmo);
+        }    
     }
 
     void OnDisable()
@@ -50,13 +56,13 @@ public class AmmoBarsCircular : MonoBehaviour
 
     public void setColorAmmoBarValue(Color color, int value) {
         if (colorAmmoBarCircular.TryGetValue(color, out GameObject ammoBar)) {
-            ammoBar.GetComponent<AmmoBarCircular>().setFill( (float)value / (float)maxAmmo);
+            ammoBar.GetComponent<AmmoBarCircular>().setFill((float)value / (float)maxAmmo);
         }
     }
 
     public void setColorAmmoBarMaxValue(Color color, float maxValue) {
         if (colorAmmoBarCircular.TryGetValue(color, out GameObject ammoBar)) {
-            ammoBar.GetComponent<AmmoBarCircular>().setMaxFill(maxValue);
+            ammoBar.GetComponent<AmmoBarCircular>().setMaxFill(1 / (float)maxValue);
         }
     }
 

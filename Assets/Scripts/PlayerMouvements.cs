@@ -6,20 +6,26 @@ public class PlayerMouvements : MonoBehaviour
 {
     public float movementSpeed;
     public GameObject firePoint;
-    public CharacterController characterController;
+    public Rigidbody rb;
+    public Vector3 moveDirection;
+    public float positionY;
+
+    void Start()
+    {
+        transform.position = new Vector3(0, positionY, 0);
+    }
 
     // Update is called once per frame
     void Update()
     {
-
+        moveDirection = Quaternion.Euler(0, 45, 0) * new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
     }
 
     void FixedUpdate()
     {
-        // Get player direction, rotate it 45deg to match camera view, normalize it to move same speed in all directions
-        Vector3 direction = Quaternion.Euler(0, 45, 0) * new Vector3(Input.GetAxisRaw("Horizontal"), 1f, Input.GetAxisRaw("Vertical")).normalized;
-        transform.Translate(direction * movementSpeed * Time.fixedDeltaTime, Space.World);
+        rb.velocity = moveDirection * movementSpeed;
 
+        // Get Player look in the direction of the mouse
         Plane plane = new Plane(Vector3.up, 0);
         float distance;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -29,6 +35,7 @@ public class PlayerMouvements : MonoBehaviour
             lookAtPoint.y = transform.position.y;
             transform.LookAt(lookAtPoint);
         }
-        transform.position = new Vector3(transform.position.x, 1, transform.position.z);
+
+        // Do a roll
     }
 }
