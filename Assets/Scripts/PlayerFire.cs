@@ -44,8 +44,7 @@ public class PlayerFire : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.V)) {
-            Debug.Log("PAAAF");
+        if(Input.GetButtonDown("Fire2")) {
             meleeWeapon.GetComponent<Animator>().SetTrigger("meleeAttackTrigger");
         }
         

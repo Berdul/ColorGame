@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 public class MonsterBehavior : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class MonsterBehavior : MonoBehaviour
     public Color color;
     public int maxHealthPoints;
     public Slider healthBarSlider;
+    public NavMeshAgent navMeshAgent;
 
     private GameObject player;
     private int healthPoints;
@@ -30,12 +32,13 @@ public class MonsterBehavior : MonoBehaviour
 
     void Update()
     {
-        moveDirection = (player.transform.position - transform.position);
-        moveDirection.y = 0;
+        // moveDirection = (player.transform.position - transform.position);
+        // moveDirection.y = 0;
+        navMeshAgent.destination = player.transform.position;
     }
     void FixedUpdate()
     {
-        rb.velocity = moveDirection.normalized * movementSpeed;
+        // rb.velocity = moveDirection.normalized * movementSpeed;
         Vector3 lookAt = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z);
         gameObject.transform.LookAt(lookAt);
     }

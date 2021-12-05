@@ -234,8 +234,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e77832009f607c4da85e2a673160ec7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealthPoints: 20
-  healthPoints: 20
+  maxHealthPoints: 2000000
+  healthPoints: 2000000
   healthBarSlider: {fileID: 3282544626647284489}
   invincibleDuration: 0.5
 --- !u!114 &141725744903548751
@@ -250,7 +250,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 298f994928e2041448afef6a3afecb16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 20
+  moveSpeed: 0
+  dashSpeed: 0
+  dashDuration: 0
   firePoint: {fileID: 3282544626536636762}
   rb: {fileID: 1544669668957900070}
   moveDirection: {x: 0, y: 0, z: 0}
@@ -270,7 +272,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 116
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!136 &5420481188103032532
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -502,7 +504,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3282544626512434917}
   m_LocalRotation: {x: 0.09229593, y: 0.7010574, z: 0.09229593, w: 0.7010574}
-  m_LocalPosition: {x: 0.93641716, y: 1.1367528, z: 0.059757672}
+  m_LocalPosition: {x: 0.9364172, y: 1.1367528, z: 0.05975767}
   m_LocalScale: {x: 0.27, y: 0.9, z: 0.09}
   m_Children:
   - {fileID: 3282544625971652429}
@@ -570,7 +572,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 3
 --- !u!1 &3282544626519107244
 GameObject:
   m_ObjectHideFlags: 0

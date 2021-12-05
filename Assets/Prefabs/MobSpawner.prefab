@@ -44,3 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterPrefab: {fileID: 3547301321280814534, guid: 49f5711cb6d53234b8786e46ee4f65c3, type: 3}
+  positionSpawnY: 0
+  spwanRadius: 0
+  tileSideLength: 10
+  tileThickness: 0
+  minSpawnDistance: 30

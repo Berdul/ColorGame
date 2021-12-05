@@ -12,6 +12,7 @@ TagManager:
   - Monster
   - MeleeWeapon
   - Wall
+  - defaultTile
   layers:
   - Default
   - TransparentFX
