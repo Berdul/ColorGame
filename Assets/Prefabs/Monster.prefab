@@ -227,6 +227,7 @@ MonoBehaviour:
   maxHealthPoints: 5
   healthBarSlider: {fileID: 3740073307253755191}
   navMeshAgent: {fileID: 3552329524248720295}
+  objectToSpawnOnDeath: {fileID: 1356935164293186507, guid: 4d9437ff4c57e7e488199e22ddb69947, type: 3}
 --- !u!54 &3322251667479205992
 Rigidbody:
   m_ObjectHideFlags: 0

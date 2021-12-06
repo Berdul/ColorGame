@@ -49,25 +49,6 @@ public class Spawner : MonoBehaviour
     }
 
     private void spawnMonster() {
-        // Vector2 rngVector2 = Random.insideUnitCircle.normalized * spwanRadius;
-        // Vector3 spawnPosition = player.transform.position + new Vector3(rngVector2.x, positionSpawnY, rngVector2.y);
-
-        //bool canSpawn = false;
-
-        // do {
-        //     rngVector2 = Random.insideUnitCircle.normalized * spwanRadius;
-        //     spawnPosition = player.transform.position + new Vector3(rngVector2.x, positionSpawnY, rngVector2.y);
-
-        //     RaycastHit hit;
-        //     // Does the ray intersect any objects excluding the player layer
-        //     if (Physics.Raycast(spawnPosition, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity))
-        //     {
-        //         //if (hit.transform.CompareTag("defaultTile")) {
-        //             canSpawn = true;
-        //         //}
-        //     }
-        // } while (!canSpawn);
-
         bool canSpawn = false;
         Vector3 spawnPosition;
         do {

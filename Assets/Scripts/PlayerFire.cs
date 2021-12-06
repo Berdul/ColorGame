@@ -84,7 +84,7 @@ public class PlayerFire : MonoBehaviour
     }
 
     public int reloadColorAmmo(Color color, int amount) {
-        if (colorAmmos.TryGetValue(color, out int ammo)) {
+        if (colorAmmos.TryGetValue(color, out int ammo) && !isColorAmmoFull(color)) {
             int newAmmoAmount = ammo + amount;
             colorAmmos[color] = newAmmoAmount;
             ammoBarsUi.setColorAmmoBarValue(color, newAmmoAmount);

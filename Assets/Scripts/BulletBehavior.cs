@@ -8,9 +8,7 @@ public class BulletBehavior : MonoBehaviour
     
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("??????????" + Time.time);
         if (other.CompareTag("Monster")) {
-            Debug.Log("MONSTEEEER" + Time.time);
             MonsterBehavior monsterBehavior = other.GetComponentInParent<MonsterBehavior>();
             if (gameObject.GetComponent<Renderer>().material.color == monsterBehavior.color) {
                 monsterBehavior.damage(damage * 3);
@@ -20,7 +18,6 @@ public class BulletBehavior : MonoBehaviour
             Destroy(gameObject);
         }
         if(other.CompareTag("Wall")) {
-            Debug.Log("HAAAAAAAAAAAAAAAAAAAAAH" + Time.time);
             Destroy(gameObject);
         }
     }

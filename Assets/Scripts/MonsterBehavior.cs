@@ -12,6 +12,7 @@ public class MonsterBehavior : MonoBehaviour
     public int maxHealthPoints;
     public Slider healthBarSlider;
     public NavMeshAgent navMeshAgent;
+    public GameObject objectToSpawnOnDeath;
 
     private GameObject player;
     private int healthPoints;
@@ -53,8 +54,14 @@ public class MonsterBehavior : MonoBehaviour
         healthPoints -= damage;
         healthBarSlider.value = healthPoints;
         if (healthPoints <= 0) {
-            Destroy(gameObject);
             score.GetComponent<Score>().addToScore(1);
+            spawnOnDeath(objectToSpawnOnDeath);
+            Destroy(gameObject);
         }
     }
+
+    void spawnOnDeath(GameObject objectToSpawnOnDeath) {
+        GameObject obj = Instantiate(objectToSpawnOnDeath, transform.position, Quaternion.identity);
+        obj.GetComponent<Renderer>().material.color = gameObject.GetComponentInChildren<Renderer>().material.color;
+    } 
 }

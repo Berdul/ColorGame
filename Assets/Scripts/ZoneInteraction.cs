@@ -35,10 +35,10 @@ public class ZoneInteraction : MonoBehaviour
             }
         } else {
             // Reaload ammo
-            if (playerPresent && !player.GetComponent<PlayerFire>().isColorAmmoFull(zoneColor)) {
+            if (playerPresent) {
                 int newColorAmmoAmount = player.GetComponent<PlayerFire>().reloadColorAmmo(zoneColor, 1);
+                PlayerZoneManager.scorePoints(zoneColor);
             }
-
         }
     }
 
