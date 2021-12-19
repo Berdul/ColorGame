@@ -15,8 +15,6 @@ public class PlayerHealth : MonoBehaviour
 
     void Start()
     {
-        maxHealthPoints = 10;
-        healthPoints = 10;
         healthBarSlider.maxValue = maxHealthPoints;
         healthBarSlider.value = healthPoints;
         invincibleDuration = 0.5f;   

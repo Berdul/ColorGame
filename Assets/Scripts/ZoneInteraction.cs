@@ -6,6 +6,9 @@ public class ZoneInteraction : MonoBehaviour
 {
     Color zoneColor;
     Color baseColor;
+
+    public int maxCounter;
+
     private int counter = 0;
     private bool playerPresent = false;
     private bool zoneCaptured = false;
@@ -24,20 +27,20 @@ public class ZoneInteraction : MonoBehaviour
             // Handle zone capture
             if (playerPresent) {
                 // Gradually change zone's color
-                gameObject.GetComponent<Renderer>().material.color = Color.Lerp(baseColor, zoneColor, (float) counter/100);
+                gameObject.GetComponent<Renderer>().material.color = Color.Lerp(baseColor, zoneColor, (float) counter / maxCounter);
                 counter++;
             } else {
                 gameObject.GetComponent<Renderer>().material.color = baseColor;
                 counter = 0;
             }
-            if (counter == 100) {
+            if (counter == maxCounter) {
                 zoneCaptured = true;
             }
         } else {
             // Reaload ammo
             if (playerPresent) {
                 int newColorAmmoAmount = player.GetComponent<PlayerFire>().reloadColorAmmo(zoneColor, 1);
-                PlayerZoneManager.scorePoints(zoneColor);
+                player.GetComponent<PlayerZoneManager>().scorePoints(zoneColor);
             }
         }
     }

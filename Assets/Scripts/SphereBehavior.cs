@@ -20,7 +20,7 @@ public class SphereBehavior : MonoBehaviour
 
     void OnCollisionEnter(Collision collisionInfo) {
         if (collisionInfo.gameObject.CompareTag("Player")) {
-            PlayerZoneManager.holdPoints(GetComponent<Renderer>().material.color, 1);
+            player.GetComponent<PlayerZoneManager>().holdPoints(GetComponent<Renderer>().material.color, 1);
             Destroy(gameObject);
         }
     }
