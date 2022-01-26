@@ -5,6 +5,11 @@ using UnityEngine;
 public class BulletBehavior : MonoBehaviour
 {
     public int damage;
+
+    private void Awake() {
+        GetComponent<TrailRenderer>().startColor = PlayerManager.instance.player.GetComponent<PlayerFire>().activeColor;
+        GetComponent<TrailRenderer>().endColor = Color.white;
+    }
     
     void OnTriggerEnter(Collider other)
     {

@@ -22,7 +22,9 @@ public class AmmoBarsCircular : MonoBehaviour
 
         if (ammoBarsCircular.Length == ColorManager.colors.Length) {
             for(int i = 0; i < ammoBarsCircular.Length; i++) {
-                ammoBarsCircular[i].transform.FindChild("FillingBarCircular").GetComponent<Image>().color = colors[i];
+                Color tempColor = colors[i];
+                tempColor.a = 0.8f;
+                ammoBarsCircular[i].transform.Find("FillingBarCircular").GetComponent<Image>().color = tempColor;
                 //ammoBarsCircular[i].transform.FindChild("FillingBarCircular").GetComponent<Image>().rectTransform.sizeDelta = 
                 ammoBarsCircular[i].transform.localScale = smallScale;
                 colorAmmoBarCircular.Add(colors[i], ammoBarsCircular[i]);

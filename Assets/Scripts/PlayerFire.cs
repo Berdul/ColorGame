@@ -94,5 +94,6 @@ public class PlayerFire : MonoBehaviour
 
     void changeActiveColor(Color color) {
         activeColor = color;
+        transform.Find("Body").GetComponent<Renderer>().material.color = color;
     }
 }

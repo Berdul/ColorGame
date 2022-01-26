@@ -6,6 +6,8 @@ public class ColorManager : MonoBehaviour
 {
     public delegate void ColorChangeAction(Color color);
     public static event ColorChangeAction OnColorChanged;
+    
+    public static Color activeColor;
 
     private int activeColorIndex;
     private KeyCode[] keyCodes = new KeyCode[]{};
@@ -65,6 +67,7 @@ public class ColorManager : MonoBehaviour
         if (OnColorChanged != null) {
             OnColorChanged(colors[colorIndex]);
         }
+        activeColor = colors[colorIndex];
     }
 
     public static Color pickColor(int index) {

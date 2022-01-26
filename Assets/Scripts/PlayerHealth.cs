@@ -8,15 +8,15 @@ public class PlayerHealth : MonoBehaviour
 {
     public int maxHealthPoints;
     public int healthPoints;
-    public Slider healthBarSlider;
+    public Image healthBar;
 
     public float invincibleDuration;
     private bool isInvincible;
 
     void Start()
     {
-        healthBarSlider.maxValue = maxHealthPoints;
-        healthBarSlider.value = healthPoints;
+        healthBar.fillAmount = 1;
+        Debug.Log("healthBar.fillAmount : " + healthBar.fillAmount);
         invincibleDuration = 0.5f;   
     }
 
@@ -24,7 +24,8 @@ public class PlayerHealth : MonoBehaviour
         if (isInvincible) return;
 
         healthPoints -= damage;
-        healthBarSlider.value = healthPoints;
+        healthBar.fillAmount = (float)healthPoints / (float)maxHealthPoints;
+        Debug.Log("healthBar.fillAmount damaged : " + healthBar.fillAmount);
         if (healthPoints <= 0) {
             SceneManager.LoadScene("Main menu");
         }
